@@ -1,0 +1,19 @@
+# Ambiente virtual do Python
+venv/
+
+# Cache do Python
+__pycache__/
+*.py[cod]
+
+# Cache do Pytest
+.pytest_cache/
+
+# Configurações do VS Code
+.vscode/
+
+# Variáveis de ambiente
+.env
+
+# Arquivos exportados de aula
+Projeto De Análise De Ações.html
+Projeto De Análise De Ações_files/
