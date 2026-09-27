@@ -2,6 +2,10 @@
 # os dados da ação.
 from dados_mercado import buscar_dados
 
+# Importamos a função responsável por realizar
+# a análise completa da ação.
+from analise import analisar_acao
+
 
 # Importamos as funções responsáveis pelos indicadores.
 from indicadores import (
@@ -92,50 +96,34 @@ except Exception as erro:
 # CÁLCULO DOS DADOS
 # ---------------------------------------------------------
 
-# Último preço de fechamento disponível.
-preco = dados["Close"].iloc[-1]
-
-
-# Calcula a variação percentual.
-variacao = calcular_variacao(dados)
-
-
-# Calcula a média móvel de 20 períodos.
-media_movel = calcular_mm20(dados)
-
-
-# Calcula o RSI.
-rsi = calcular_rsi(dados)
-
-
-# Calcula o MACD e sua linha de sinal.
-macd, sinal_macd = calcular_macd(dados)
-
-
-# Calcula o volume atual e o volume médio.
-volume_atual, volume_medio = calcular_volume(dados)
-
-
-# ---------------------------------------------------------
-# PONTUAÇÃO
-# ---------------------------------------------------------
-
-# Enviamos todos os indicadores para a função
-# que calcula a pontuação de 0 a 5.
-pontuacao = calcular_pontuacao(
-    preco,
-    media_movel,
-    rsi,
-    variacao,
-    macd,
-    sinal_macd,
-    volume_atual,
-    volume_medio
+# Enviamos os dados da ação para a função
+# responsável por realizar toda a análise.
+resultado = analisar_acao(
+    dados,
+    calcular_variacao,
+    calcular_mm20,
+    calcular_rsi,
+    calcular_macd,
+    calcular_volume,
+    calcular_pontuacao,
+    classificar_acao
 )
 
 
-# Transformamos a pontuação em uma classificação.
-classificacao = classificar_acao(pontuacao)
+# Pegamos cada informação do resultado.
+#
+# resultado é um dicionário criado dentro
+# da função analisar_acao().
+preco = resultado["preco"]
+variacao = resultado["variacao"]
+media_movel = resultado["media_movel"]
+rsi = resultado["rsi"]
+macd = resultado["macd"]
+sinal_macd = resultado["sinal_macd"]
+volume_atual = resultado["volume_atual"]
+volume_medio = resultado["volume_medio"]
+pontuacao = resultado["pontuacao"]
+classificacao = resultado["classificacao"]
 
 
 # ---------------------------------------------------------
