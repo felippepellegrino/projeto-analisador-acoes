@@ -167,4 +167,3 @@ Próximas etapas planejadas:
 Este projeto possui finalidade **educacional e de portfólio**, sendo desenvolvido para praticar programação, análise de dados, testes automatizados e desenvolvimento de software.
 
 As análises e classificações geradas pelo sistema não constituem recomendação de investimento.
-
