@@ -68,10 +68,12 @@ projeto_analisador_acoes/
 │   ├── __init__.py
 │   ├── main.py
 │   ├── dados_mercado.py
-│   └── indicadores.py
+│   ├── indicadores.py
+│   └── analise.py
 │
 ├── tests/
-│   └── test_indicadores.py
+│   ├── test_indicadores.py
+│   └── test_analise.py
 │
 ├── README.md
 ├── pytest.ini
