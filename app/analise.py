@@ -19,6 +19,9 @@ def analisar_acao(
     No final, retorna todos os resultados
     organizados em um dicionário.
     """
+    
+    if dados.empty:
+        raise ValueError("Não existem dados para realizar a análise.")
 
     # -----------------------------------------------------
     # PREÇO ATUAL
