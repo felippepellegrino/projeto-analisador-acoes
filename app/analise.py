@@ -3,6 +3,7 @@
 # ---------------------------------------------------------
 
 def analisar_acao(
+    acao,
     dados,
     calcular_variacao,
     calcular_mm20,
@@ -102,6 +103,7 @@ def analisar_acao(
     # Pense no dicionário como uma caixa com várias
     # informações identificadas por nomes.
     resultado = {
+        "acao": acao,
         "preco": preco,
         "variacao": variacao,
         "media_movel": media_movel,

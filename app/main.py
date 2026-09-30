@@ -99,6 +99,7 @@ except Exception as erro:
 # Enviamos os dados da ação para a função
 # responsável por realizar toda a análise.
 resultado = analisar_acao(
+    acao,
     dados,
     calcular_variacao,
     calcular_mm20,

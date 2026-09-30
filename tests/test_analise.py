@@ -90,6 +90,7 @@ def test_analisar_acao():
     # -----------------------------------------------------
 
     resultado = analisar_acao(
+        "PETR4",
         dados,
         calcular_variacao,
         calcular_mm20,
@@ -106,6 +107,9 @@ def test_analisar_acao():
     # -----------------------------------------------------
 
     # O último preço deve ser 14.
+    
+    assert resultado["acao"] == "PETR4"
+    
     assert resultado["preco"] == 14
 
     # A variação simulada deve ser 10.
@@ -148,6 +152,7 @@ def test_analisar_acao_sem_dados():
 
     with pytest.raises(ValueError):
         analisar_acao(
+            None,
             dados,
             None,
             None,
@@ -155,6 +160,6 @@ def test_analisar_acao_sem_dados():
             None,
             None,
             None,
-            None
+            None,
         )
 
