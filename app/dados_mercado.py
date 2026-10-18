@@ -16,7 +16,7 @@ def buscar_dados(acao):
 
     # O Yahoo Finance utiliza ".SA" para ações brasileiras.
     # PETR4 -> PETR4.SA
-    codigo = acao + ".SA"
+    codigo = acao if acao.endswith(".SA") else acao + ".SA"
 
     # Criamos um objeto que representa a ação.
     ticker = yf.Ticker(codigo)

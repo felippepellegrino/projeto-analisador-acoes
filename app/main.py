@@ -15,7 +15,8 @@ from indicadores import (
     calcular_pontuacao,
     classificar_acao,
     calcular_macd,
-    calcular_volume
+    calcular_volume,
+    analisar_criterios
 )
 
 
@@ -107,7 +108,8 @@ resultado = analisar_acao(
     calcular_macd,
     calcular_volume,
     calcular_pontuacao,
-    classificar_acao
+    classificar_acao,
+    analisar_criterios
 )
 
 
@@ -125,6 +127,7 @@ volume_atual = resultado["volume_atual"]
 volume_medio = resultado["volume_medio"]
 pontuacao = resultado["pontuacao"]
 classificacao = resultado["classificacao"]
+criterio = resultado["criterios"]
 
 
 # ---------------------------------------------------------
@@ -177,5 +180,13 @@ print(
 print(
     f"Classificação: {classificacao}"
 )
+
+print()
+print("CRITÉRIOS DA ANÁLISE")
+print("--------------------------------------")
+
+for criterio, atendido in criterio.items():
+    status = "ATENDIDO" if atendido else "NÃO ATENDIDO"
+    print(f"{criterio}: {status}")
 
 print("======================================")
