@@ -77,6 +77,33 @@ def test_analisar_acao():
         assert volume_medio == 900
 
         return 4
+    # Simula a análise dos critérios.
+    def analisar_criterios(
+        preco,
+        media_movel,
+        rsi,
+        variacao,
+        macd,
+        sinal_macd,
+        volume_atual,
+        volume_medio
+    ):
+        assert preco == 14
+        assert media_movel == 12
+        assert rsi == 50
+        assert variacao == 10
+        assert macd == 2
+        assert sinal_macd == 1
+        assert volume_atual == 1000
+        assert volume_medio == 900
+
+        return {
+            "preco_acima_mm20": True,
+            "variacao_positiva": True,
+            "rsi_abaixo_70": True,
+            "macd_acima_sinal": True,
+            "volume_acima_media": True
+        }
 
 
     # Simula a classificação.
@@ -98,7 +125,8 @@ def test_analisar_acao():
         calcular_macd,
         calcular_volume,
         calcular_pontuacao,
-        classificar_acao
+        classificar_acao,
+        analisar_criterios
     )
 
 
@@ -138,6 +166,11 @@ def test_analisar_acao():
 
     # A classificação simulada deve ser FAVORÁVEL.
     assert resultado["classificacao"] == "FAVORÁVEL"
+    assert resultado["criterios"]["preco_acima_mm20"] is True
+    assert resultado["criterios"]["variacao_positiva"] is True
+    assert resultado["criterios"]["rsi_abaixo_70"] is True
+    assert resultado["criterios"]["macd_acima_sinal"] is True
+    assert resultado["criterios"]["volume_acima_media"] is True
 
 
 def test_analisar_acao_sem_dados():
@@ -161,5 +194,6 @@ def test_analisar_acao_sem_dados():
             None,
             None,
             None,
+            None
         )
 

@@ -160,6 +160,60 @@ def calcular_pontuacao(
     # Retornamos a pontuação final.
     return pontos
 
+def analisar_criterios(
+    preco,
+    media_movel,
+    rsi,
+    variacao,
+    macd,
+    sinal_macd,
+    volume_atual,
+    volume_medio
+):
+    """
+    Analisa cada critério individualmente.
+
+    Retorna um dicionário informando
+    quais critérios foram atendidos.
+    """
+
+    criterios = {
+        "preco_acima_mm20": preco > media_movel,
+        "variacao_positiva": variacao > 0,
+        "rsi_abaixo_70": rsi < 70,
+        "macd_acima_sinal": macd > sinal_macd,
+        "volume_acima_media": volume_atual > volume_medio
+    }
+
+    return criterios
+
+def analisar_criterios(
+    preco,
+    media_movel,
+    rsi,
+    variacao,
+    macd,
+    sinal_macd,
+    volume_atual,
+    volume_medio
+):
+    """
+    Analisa cada critério individualmente.
+
+    Retorna um dicionário informando
+    quais critérios foram atendidos.
+    """
+
+    criterios = {
+        "preco_acima_mm20": preco > media_movel,
+        "variacao_positiva": variacao > 0,
+        "rsi_abaixo_70": rsi < 70,
+        "macd_acima_sinal": macd > sinal_macd,
+        "volume_acima_media": volume_atual > volume_medio
+    }
+
+    return criterios
+
 
 def classificar_acao(pontuacao):
     """

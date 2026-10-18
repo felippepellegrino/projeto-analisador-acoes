@@ -11,7 +11,8 @@ def analisar_acao(
     calcular_macd,
     calcular_volume,
     calcular_pontuacao,
-    classificar_acao
+    classificar_acao,
+    analisar_criterios
 ):
     """
     Recebe os dados de uma ação e calcula todos
@@ -81,6 +82,22 @@ def analisar_acao(
         volume_atual,
         volume_medio
     )
+    # -----------------------------------------------------
+    # ANÁLISE DOS CRITÉRIOS
+    # -----------------------------------------------------
+
+    # Analisa individualmente cada critério utilizado
+    # na pontuação da ação.
+    criterios = analisar_criterios(
+        preco,
+        media_movel,
+        rsi,
+        variacao,
+        macd,
+        sinal_macd,
+        volume_atual,
+        volume_medio
+    )
 
 
     # -----------------------------------------------------
@@ -113,7 +130,8 @@ def analisar_acao(
         "volume_atual": volume_atual,
         "volume_medio": volume_medio,
         "pontuacao": pontuacao,
-        "classificacao": classificacao
+        "classificacao": classificacao,
+        "criterios": criterios
     }
 
 

@@ -7,7 +7,8 @@ from app.indicadores import (
     calcular_mm20,
     calcular_rsi,
     calcular_macd,
-    calcular_volume
+    calcular_volume,
+    analisar_criterios
 )
 
 
@@ -337,3 +338,24 @@ def test_classificacao_pontuacao_negativa():
     resultado = classificar_acao(-1)
 
     assert resultado == "DESFAVORÁVEL"
+def test_analisar_criterios():
+    """
+    Testa se cada critério é identificado corretamente.
+    """
+
+    resultado = analisar_criterios(
+        preco=110,
+        media_movel=100,
+        rsi=50,
+        variacao=10,
+        macd=2,
+        sinal_macd=1,
+        volume_atual=2000,
+        volume_medio=1000
+    )
+
+    assert resultado["preco_acima_mm20"] is True
+    assert resultado["variacao_positiva"] is True
+    assert resultado["rsi_abaixo_70"] is True
+    assert resultado["macd_acima_sinal"] is True
+    assert resultado["volume_acima_media"] is True
